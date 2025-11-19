@@ -12,7 +12,7 @@ El principio de operación se basa en aplicar una densidad de corriente sobre la
   
     $$H_2 + O^{2-} \rightarrow H_2O + 2e^- \quad \text{(en el ánodo)}$$
 
-El flujo neto de electrones a través de un circuito externo genera una diferencia de potencial (voltaje) utilizable. Sin embargo, este voltaje operativo es inferior al potencial ideal de la reacción ($1.229 \text{ V}$ en condiciones estándar) debido a diversas pérdidas irreversibles, conocidas como sobrepotenciales o polarizaciones.
+El flujo neto de electrones a través de un circuito externo genera una diferencia de potencial (voltaje) utilizable (proceso en figura 2 [3]). Sin embargo, este voltaje operativo es inferior al potencial ideal de la reacción ($1.229 \text{ V}$ en condiciones estándar) debido a diversas pérdidas irreversibles, conocidas como sobrepotenciales o polarizaciones.
 
 El objetivo de este proyecto es desarrollar y validar un modelo matemático que permita predecir el voltaje real de operación de una SOFC tubular en función de variables operativas como la temperatura, la concentración de reactivos, la presión y las dimensiones geométricas. Este modelo busca ser una herramienta útil para investigadores, permitiendo explorar el desempeño de la celda bajo distintas condiciones sin recurrir a costosos y extensos ensayos experimentales para cada escenario.
 
@@ -22,12 +22,12 @@ El objetivo de este proyecto es desarrollar y validar un modelo matemático que 
 
 El modelo desarrollado se basa y valida con datos experimentales y parámetros reportados en la literatura científica para celdas SOFC tubulares con configuraciones Siemens-Westinghouse.
 
-* **Dimensiones Características [3]:**
+* **Dimensiones Características [4]:**
     * Ánodo: $\delta_{a} = 125 \text{ µm}$
     * Cátodo: $\delta_{c} = 2 \text{ mm}$
     * Electrolito: $\delta_{e} = 40 \text{ µm}$
     * Diámetro externo del tubo: $2.2 \text{ mm}$
-* **Resistividades [4]:**
+* **Resistividades [5]:**
     * Ánodo (Ni–YSZ): $\rho_a = 1 / (1.117e7 \cdot \exp(1392/T))$
     * Cátodo (LSM): $\rho_c = 1 / (1.232e4 \cdot \exp(-600/T))$
     * Electrolito (YSZ): $\rho_e = 1 / (3.401e4 \cdot \exp(-10350/T))$
@@ -82,7 +82,7 @@ Esta pérdida surge de la limitación en el transporte de masa de los reactivos 
   
     $$D_{kl} = \frac{1e-7 T^{1.75} \left( \frac{1}{M_k} + \frac{1}{M_l} \right)^{1/2}}{p \left[ \left( \sum \nu \right)_k^{1/3} + \left( \sum \nu \right)_l^{1/3} \right]^2}$$
 
-Con $\nu$ los volumenes atómicos [5]:
+Con $\nu$ los volumenes atómicos [6]:
 * $v_{H2}$ = 6.12
 * $v_{H2O}$ = 13.1
 * $v_{O2 }$ = 16.3
@@ -105,8 +105,37 @@ Donde $q$ representa cada componente (ánodo, cátodo, electrolito). La resistiv
 
 ## Implementación
 
-Con todo planteado, el modelo se implementa en un `main` que realiza un cálculo iterativo para un conjunto de densidades de corriente experimentales, obteniendo la curva de polarización (voltaje vs. densidad de corriente) característica de la celda. La Figura 3 del proyecto compara los resultados del modelo con los datos experimentales.
+Con todo lo planteado, el modelo se implementa en un main que realiza un cálculo iterativo sobre un conjunto de densidades de corriente experimentales, obteniendo la curva de polarización (voltaje vs. densidad de corriente) característica de la celda.
+La Figura 3 del proyecto compara los resultados simulados con los valores experimentales, observándose pequeñas diferencias atribuibles a las aproximaciones realizadas.
+Una posible mejora futura consiste en incorporar las temperaturas y presiones en el punto triple (TPB) dentro de las funciones que actualmente consideran solo valores promedio, lo que permitiría refinar el ajuste del modelo.
 
 ---
 
 ## Aplicación en Chile
+
+Chile presenta un alto potencial para la aplicación de celdas SOFC, especialmente bajo el contexto del Plan Nacional de Hidrógeno Verde.
+Estas celdas podrían integrarse en centrales solares o eólicas, como las de la región de Magallanes, aprovechando su enorme capacidad de generación eólica y los proyectos ya existentes de producción de hidrógeno.
+El modelo desarrollado permitiría evaluar el voltaje de la celda ante distintas condiciones operacionales, optimizando el desempeño antes de realizar ensayos experimentales costosos y apoyando el diseño de sistemas basados en hidrógeno a nivel nacional.
+
+## Impactos ambientales, sociales y económicos
+Como se mencionó previamente, estas celdas cuentan con un impacto ambiental mínimo, ante solo podrucir como "residuo" agua. Esto se traduce en una contribución directa a la descarbonización del aire y, a largo plazo, en mejoras en la salud pública de las comunidades cercanas a los centros energéticos, teniendo así un beneficio social claro.
+Desde el punto de vista económico, si bien actualmente los costos de implementación son elevados, entre 1695-2825 USD/kW, , se proyecta una reducción a 1356–1977 USD/kW en los próximos años [7]. Esta tendencia sugiere un escenario favorable para su incorporación progresiva, pero actualmente aún se presenta como una limitante en el ámbito de costos. 
+
+
+## Proyección
+
+Considerando la disminución esperada en los costos y el impulso que entrega el plan nacional de hidrógeno, Chile se encuentra en una posición privilegiada para expandir el uso de tecnologías SOFC en las próximas décadas.
+Con una estrategia adecuada de inversión y desarrollo, el país podría incrementar la utilización de estas celdas tanto en generación eléctrica como en aplicaciones industriales, fortaleciendo la transición hacia una matriz energética más limpia, eficiente y sustentable.
+
+---
+
+## Referencias
+* [1] What are Solid Oxide Fuel Cells?. Linde AMT. https://www.linde-amt.com/resource-library/articles/solid-oxide-fuel-cells#:~:text=Alta%20eficiencia%20y%20emisiones%20m%C3%ADnimas,tradicionales%20de%20generaci%C3%B3n%20de%20energ%C3%ADa.
+* [2] Karcz, M. From 0D to 1D modeling of tubular solid oxide fuel cell. Energy Conversion And Management 2009, 50 (9), 2307-2315. https://doi.org/10.1016/j.enconman.2009.05.007.
+* [3] A, H.; Santos, J. A. F.; Z, R.; Matencio, T. Ceramic Materials for Solid Oxide Fuel Cells. En InTech eBooks; 2011. https://doi.org/10.5772/18297.
+* [4]Song, T. W.; Sohn, J. L.; Kim, J. H.; Kim, T. S.; Ro, S. T.; Suzuki, K. Performance analysis of a tubular solid oxide fuel cell/micro gas turbine hybrid power system based on a quasi-two dimensional model. Journal Of Power Sources 2004, 142 (1-2), 30-42. https://doi.org/10.1016/j.jpowsour.2004.10.011.
+* [5] Zhang, X.; Li, G.; Li, J.; Feng, Z. Numerical study on electric characteristics of solid oxide fuel cells. Energy Conversion And Management 2006, 48 (3), 977-989. https://doi.org/10.1016/j.enconman.2006.08.011.
+* [6] Ratnakar, R. R.; Dindoruk, B. The Role of Diffusivity in Oil and Gas Industries: Fundamentals, Measurement, and Correlative Techniques. Processes 2022, 10 (6), 1194. https://doi.org/10.3390/pr10061194.
+* [7] Schubert, M. High-Temperature Fuel Cell - Solid Oxide Fuel Cell (SOFC) | IEA Advanced Fuel Cells. IEA Advanced Fuel Cells. https://ieafuelcell.com/output/technology-reports/high-temperature-fuel-cell-solid-oxide-fuel-cell-sofc/.
+
+
