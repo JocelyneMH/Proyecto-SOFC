@@ -1,8 +1,8 @@
 ## Contexto de la Tecnología
 
-Las celdas de combustible de óxido sólido (SOFC), por sus siglas en inglés, representan una tecnología avanzada para la generación de electricidad mediante la reacción electroquímica del hidrógeno con el oxígeno. Destacan por su alta eficiencia energética, especialmente en sistemas de cogeneración o ciclos combinados, donde pueden alcanzar valores de hasta el 85%. Esta elevada eficiencia se atribuye en parte a su operación a altas temperaturas (generalmente entre $800 \text{ °C}$ y $1000 \text{ °C}$), que favorecen la cinética electroquímica y permiten el aprovechamiento del calor residual (cita). Además, al utilizar hidrógeno como combustible, las SOFC son consideradas una tecnología limpia, con un impacto ambiental mínimo [cita].
+Las celdas de combustible de óxido sólido (SOFC), por sus siglas en inglés, representan una tecnología avanzada para la generación de electricidad mediante la reacción electroquímica del hidrógeno con el oxígeno. Destacan por su alta eficiencia energética, especialmente en sistemas de cogeneración o ciclos combinados, donde pueden alcanzar valores de hasta el 85%. Esta elevada eficiencia se atribuye en parte a su operación a altas temperaturas (generalmente entre $800 \text{ °C}$ y $1000 \text{ °C}$), que favorecen la cinética electroquímica y permiten el aprovechamiento del calor residual. Además, al utilizar hidrógeno como combustible, las SOFC son consideradas una tecnología limpia, con un impacto ambiental mínimo [1].
 
-El principio de operación se basa en aplicar una densidad de corriente sobre la celda, que en este caso es de diseño tubular (Figura 1) , lo que desencadena las siguientes reacciones electroquímicas:
+El principio de operación se basa en aplicar una densidad de corriente sobre la celda, que en este caso es de diseño tubular (Figura 1 [2]) , lo que desencadena las siguientes reacciones electroquímicas:
 
 * Cátodo: El oxígeno del aire se reduce, incorporando electrones para formar iones óxido ($O^{2-}$):
   
@@ -22,16 +22,16 @@ El objetivo de este proyecto es desarrollar y validar un modelo matemático que 
 
 El modelo desarrollado se basa y valida con datos experimentales y parámetros reportados en la literatura científica para celdas SOFC tubulares con configuraciones Siemens-Westinghouse.
 
-* **Dimensiones Características (cita):**
+* **Dimensiones Características [3]:**
     * Ánodo: $\delta_{a} = 125 \text{ µm}$
     * Cátodo: $\delta_{c} = 2 \text{ mm}$
     * Electrolito: $\delta_{e} = 40 \text{ µm}$
     * Diámetro externo del tubo: $2.2 \text{ mm}$
-* **Resistividades (cita):**
+* **Resistividades [4]:**
     * Ánodo (Ni–YSZ): $\rho_a = 1 / (1.117e7 \cdot \exp(1392/T))$
     * Cátodo (LSM): $\rho_c = 1 / (1.232e4 \cdot \exp(-600/T))$
     * Electrolito (YSZ): $\rho_e = 1 / (3.401e4 \cdot \exp(-10350/T))$
-* **Condiciones de operación (cita):**
+* **Condiciones de operación [2]:**
     * Temperatura de combustible: $1123 \text{ K}$
     * Temperatura de aire: $873 \text{ K}$
     * Composiciones másicas de entrada:
@@ -68,7 +68,7 @@ Aquí, $i$ es la densidad de corriente e $i_0$ es la densidad de corriente de in
 
 ### Polarización por Concentración ($\eta_{conc}$)
 
-Esta pérdida surge de la limitación en el transporte de masa de los reactivos hacia los sitios activos. Se modela calculando primero la difusión efectiva ($D_{eff}$) en la función correspondiente, para ello se combinan los mecanismos de difusión molecular y de Knudsen, considerando la porosidad $\epsilon = 0.5$, tortuosidad $\tau = 3$, y radio promedio de poro $\overline{r} = 1 \text{ µm}$ (cita paper).
+Esta pérdida surge de la limitación en el transporte de masa de los reactivos hacia los sitios activos. Se modela calculando primero la difusión efectiva ($D_{eff}$) en la función correspondiente, para ello se combinan los mecanismos de difusión molecular y de Knudsen, considerando la porosidad $\epsilon = 0.5$, tortuosidad $\tau = 3$, y radio promedio de poro $\overline{r} = 1 \text{ µm}$ [2].
 
 * **Difusividad de Knudsen** para una especie $k$:
   
@@ -82,12 +82,11 @@ Esta pérdida surge de la limitación en el transporte de masa de los reactivos 
   
     $$D_{kl} = \frac{1e-7 T^{1.75} \left( \frac{1}{M_k} + \frac{1}{M_l} \right)^{1/2}}{p \left[ \left( \sum \nu \right)_k^{1/3} + \left( \sum \nu \right)_l^{1/3} \right]^2}$$
 
-Con $\nu$ los volumes atómicos (cita):
-* $v_{H2}$ = 7.07
-* $v_{H2O}$ = 12.7
-* $v_{O2 }$ = 16.6
-* $v_{N2 }$ = 17.9
-
+Con $\nu$ los volumenes atómicos [5]:
+* $v_{H2}$ = 6.12
+* $v_{H2O}$ = 13.1
+* $v_{O2 }$ = 16.3
+* $v_{N2 }$ = 18.5
 
 Finalmente, las polarizaciones por concentración se calculan determinando las presiones parciales en el TPB (Triple Boundary Phase) y aplicando una reducción de la ecuación de sobrepotencial:
 
