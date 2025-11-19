@@ -31,7 +31,7 @@ tau=3;
 U=[];
 for j=i
   #Visualización de los sobrepotenciales
-  disp(sprintf('Sobrepotencial a %d A/m^2:', i));
+  disp(sprintf('Sobrepotencial a %d A/m^2:', j));
   disp('n_{concentracion}:')
   etaconc(j, T_fuel,T_air, P_c,dimensiones,Deff_H2,Deff_H2O,Deff_O2)
   disp('n_{activación}:')
@@ -56,3 +56,4 @@ legend('Modelo', 'Experimental')
 title('U_{cell} vs i')
 axis([0 6000 0 1]);
 grid on
+
