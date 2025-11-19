@@ -31,7 +31,7 @@ El modelo desarrollado se basa y valida con datos experimentales y parámetros r
     * Ánodo (Ni–YSZ): $\rho_a = 1 / (1.117e7 \cdot \exp(1392/T))$
     * Cátodo (LSM): $\rho_c = 1 / (1.232e4 \cdot \exp(-600/T))$
     * Electrolito (YSZ): $\rho_e = 1 / (3.401e4 \cdot \exp(-10350/T))$
-* **Condiciones de Operación de Referencia:**
+* **Condiciones de operación (cita):**
     * Temperatura de combustible: $1123 \text{ K}$
     * Temperatura de aire: $873 \text{ K}$
     * Composiciones másicas de entrada:
@@ -41,7 +41,7 @@ El modelo desarrollado se basa y valida con datos experimentales y parámetros r
 
 ---
 
-## Principio de Operación y Modelo Matemático
+## Modelo matemático
 
 El modelo se fundamenta en la ecuación principal que relaciona el voltaje de la celda ($U_{cell}$) con el potencial teórico de Nernst ($E$) y la suma de las pérdidas por polarización:
 
@@ -82,7 +82,7 @@ Esta pérdida surge de la limitación en el transporte de masa de los reactivos 
   
     $$D_{kl} = \frac{1e-7 T^{1.75} \left( \frac{1}{M_k} + \frac{1}{M_l} \right)^{1/2}}{p \left[ \left( \sum \nu \right)_k^{1/3} + \left( \sum \nu \right)_l^{1/3} \right]^2}$$
 
-Con $\nu$ los volumes atómicos:
+Con $\nu$ los volumes atómicos (cita):
 * $v_{H2}$ = 7.07
 * $v_{H2O}$ = 12.7
 * $v_{O2 }$ = 16.6
@@ -107,3 +107,7 @@ Donde $q$ representa cada componente (ánodo, cátodo, electrolito). La resistiv
 ## Implementación
 
 Con todo planteado, el modelo se implementa en un `main` que realiza un cálculo iterativo para un conjunto de densidades de corriente experimentales, obteniendo la curva de polarización (voltaje vs. densidad de corriente) característica de la celda. La Figura 3 del proyecto compara los resultados del modelo con los datos experimentales.
+
+---
+
+## Aplicación en Chile
