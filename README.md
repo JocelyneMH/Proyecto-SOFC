@@ -38,9 +38,7 @@ El modelo desarrollado se basa y valida con datos experimentales y parámetros r
         * Combustible: $0.89 \text{ H}_2$ y $0.11 \text{ H}_2\text{O}$
         * Aire: $0.23 \text{ O}_2$ y $0.77 \text{ N}_2$
     * Presión de operación: Atmosférica ($101325 \text{ Pa}$)
-
 ---
-
 ## Modelo matemático
 
 El modelo se fundamenta en la ecuación principal que relaciona el voltaje de la celda ($U_{cell}$) con el potencial teórico de Nernst ($E$) y la suma de las pérdidas por polarización:
@@ -101,8 +99,6 @@ $$\eta_{ohm} = i \cdot \sum_q (\rho_q \delta_q)$$
 
 Donde $q$ representa cada componente (ánodo, cátodo, electrolito). La resistividad ($\rho_q$) de cada material es dependiente de la temperatura. Mientras que ($\delta_q$) se calcula en función de la geometría tubular específica, utilizando los parámetros adimensionales $A\pi = 0.804$ y $B\pi = 0.130$ y los espesores específicos.
 
----
-
 ## Implementación
 
 Con todo lo planteado, el modelo se implementa en un main que realiza un cálculo iterativo sobre un conjunto de densidades de corriente experimentales, obteniendo la curva de polarización (voltaje vs. densidad de corriente) característica de la celda.
@@ -126,6 +122,13 @@ Desde el punto de vista económico, si bien actualmente los costos de implementa
 
 Considerando la disminución esperada en los costos y el impulso que entrega el plan nacional de hidrógeno, Chile se encuentra en una posición privilegiada para expandir el uso de tecnologías SOFC en las próximas décadas.
 Con una estrategia adecuada de inversión y desarrollo, el país podría incrementar la utilización de estas celdas tanto en generación eléctrica como en aplicaciones industriales, fortaleciendo la transición hacia una matriz energética más limpia, eficiente y sustentable.
+
+---
+## Conclusión
+Finalmente, el proyecto permitió desarrollar un modelo capaz de predecir con buen nivel de precisión el voltaje obtenido para una densidad de corriente aplicada en una celda SOFC.
+Desde el punto de vista técnico, esto representa un avance significativo, ya que posibilita evaluar el desempeño eléctrico de la celda sin requerir ensayos experimentales para cada condición de operación, reduciendo costos y tiempo de análisis. 
+Aunque, si bien se observan diferencias respecto a los datos experimentales, estas pueden atribuirse a las aproximaciones realizadas con parámetros considerados constantes o promedios. Por tanto, el modelo aún presenta oportunidades de mejora, especialmente mediante la incorporación de parámetros dependientes del punto triple (TPB).
+En conjunto, este trabajo constituye un aporte relevante al estudio e implementación de celdas SOFC en Chile, en un contexto donde el hidrógeno verde se posiciona como una herramienta clave para la transición energética y la descarbonización del país.
 
 ---
 
