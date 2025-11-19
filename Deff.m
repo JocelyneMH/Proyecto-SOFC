@@ -22,10 +22,10 @@ P_H2O = X_h2o * P_total/101325;
 P_O2  = X_o2  * P_total/101325;
 
 % Diffusion volumes
-v_H2  = 7.07;
-v_H2O = 12.7;
-v_O2  = 16.6;
-v_N2  = 17.9;
+v_H2  = 6.12;
+v_H2O = 13.1;
+v_O2  = 16.3;
+v_N2  = 18.5;
 
 % Difusión de Knudsen
 DK_H2 = (2/3)*r_pore*sqrt((8*R*T)/(pi*M_H2) );
@@ -51,3 +51,4 @@ Deff_O2  = ((E/tau) * ((1/Dm_O2 )  + (1/DK_O2 )))^(-1);
 
 
 endfunction
+
